@@ -1,0 +1,12 @@
+name: utcwpbedrock
+recipe: wordpress
+config:
+  webroot: web
+services:
+  appserver:
+    run:
+      - cd $LANDO_MOUNT && composer install
+      - composer global require laravel/envoy
+tooling:
+  envoy:
+    service: appserver
