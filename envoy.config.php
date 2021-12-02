@@ -64,7 +64,7 @@
      *
      * @example false
      */
-    // 'composer_install' => true,
+    'composer_install' => true,
 
     /**
      * NPM install (optional)
@@ -73,7 +73,7 @@
      *
      * @example false
      */
-    // 'npm_install' => true,
+    'npm_install' => false,
 
     /**
      * Node version (optional)
@@ -82,7 +82,7 @@
      *
      * @example 11
      */
-    // 'node_version' => false,
+    'node_version' => false,
 
     /**
      * Keep releases count (optional)
