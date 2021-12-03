@@ -61,6 +61,7 @@
     permissions
     {{ $project['deploy_tactic'] }}
     symlink
+    permalinks
     purge_old
 @endstory
 
@@ -146,7 +147,9 @@
     rm -rf {{ $releases_dir }}/{{ $release }}/web/app/uploads;
     cd {{ $releases_dir }}/{{ $release }};
     ln -nfs {{ $shared_dir }}/uploads web/app/uploads;
+@endtask
 
-    echo 'Update permalink structure';
-    wp rewrite structure '/%year%/%monthnum%/%postname%' --hard --quiet;
+@task('permalink')
+    echo 'Update rewrite structure';
+    wp rewrite structure '/%year%/%monthnum%/%postname%' --hard;
 @endtask
