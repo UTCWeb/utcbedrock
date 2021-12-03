@@ -148,8 +148,8 @@
     ln -nfs {{ $shared_dir }}/uploads web/app/uploads;
 
     echo 'Flush rewrite rules';
-    wp rewrite flush;
+    wp rewrite flush --quiet;
 
     echo 'Update permalink structure';
-    wp rewrite structure '/%year%/%monthnum%/%postname%';
+    wp rewrite structure '/%year%/%monthnum%/%postname%' --quiet;
 @endtask
