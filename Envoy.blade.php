@@ -147,9 +147,6 @@
     cd {{ $releases_dir }}/{{ $release }};
     ln -nfs {{ $shared_dir }}/uploads web/app/uploads;
 
-    echo 'Flush rewrite rules';
-    wp rewrite flush --quiet;
-
     echo 'Update permalink structure';
-    wp rewrite structure '/%year%/%monthnum%/%postname%' --quiet;
+    wp rewrite structure '/%year%/%monthnum%/%postname%' --hard --quiet;
 @endtask
