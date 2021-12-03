@@ -146,4 +146,10 @@
     rm -rf {{ $releases_dir }}/{{ $release }}/web/app/uploads;
     cd {{ $releases_dir }}/{{ $release }};
     ln -nfs {{ $shared_dir }}/uploads web/app/uploads;
+
+    echo 'Flush rewrite rules';
+    wp rewrite flush;
+
+    echo 'Update permalink structure';
+    wp rewrite structure '/%year%/%monthnum%/%postname%';
 @endtask
