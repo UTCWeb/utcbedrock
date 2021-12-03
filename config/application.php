@@ -62,6 +62,11 @@ Config::define('WP_CONTENT_DIR', $webroot_dir . Config::get('CONTENT_DIR'));
 Config::define('WP_CONTENT_URL', Config::get('WP_HOME') . Config::get('CONTENT_DIR'));
 
 /**
+ *  Default Themes Directory
+ */
+Config::define('WP_DEFAULT_THEME', 'CONTENT_DIR' . '/themes');
+
+/**
  * DB settings
  */
 Config::define('DB_NAME', env('DB_NAME'));
