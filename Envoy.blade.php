@@ -149,7 +149,7 @@
     ln -nfs {{ $shared_dir }}/uploads web/app/uploads;
 @endtask
 
-@task('permalink')
+@task('permalinks')
     echo 'Update rewrite structure';
     wp rewrite structure '/%year%/%monthnum%/%postname%' --hard;
 @endtask
