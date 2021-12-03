@@ -143,7 +143,7 @@
     ln -nfs {{ $shared_dir }}/.env .env;
 
     echo 'Linking upload directory';
-    rm -rf {{ $releases_dir }}/{{ $release }}/public_html/app/uploads;
+    rm -rf {{ $releases_dir }}/{{ $release }}/web/app/uploads;
     cd {{ $releases_dir }}/{{ $release }};
     ln -nfs {{ $shared_dir }}/uploads uploads;
 @endtask
