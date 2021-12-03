@@ -145,5 +145,5 @@
     echo 'Linking upload directory';
     rm -rf {{ $releases_dir }}/{{ $release }}/web/app/uploads;
     cd {{ $releases_dir }}/{{ $release }};
-    ln -nfs {{ $shared_dir }}/uploads uploads;
+    ln -nfs {{ $shared_dir }}/uploads /web/app/uploads;
 @endtask
