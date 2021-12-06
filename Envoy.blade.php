@@ -104,8 +104,8 @@
 
 @task('permissions')
     echo 'Setting up permissions'
-    cd {{ $releases_dir }};
-    chmod -R u=rwx,g=rx {{ $release }};
+    cd {{ $releases_dir}};
+    chmod -R ug+rwx {{ $release }};
 @endtask
 
 
