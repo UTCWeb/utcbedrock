@@ -1,9 +1,10 @@
 // This is adapted from /vendor/koterle/envoy-oven,
 // with chgrp and chmod permissions changes removed,
+// symlink changes, addition of wp-cli commands,
 // services restart/reload removed, etc.
 @setup
     // We can load the config via a project argument JSON encoded string or
-    // via the envoy.config.php file
+    // via the envoy.config.php file; we use envoy.config.php
     if (isset($project)) {
         $project = json_decode($project, true);
     } else {
@@ -41,7 +42,7 @@
     $release = date("YmdHis");
 
     if (! $branch) {
-        $branch = isset($project['branch_default']) ? $project['branch_default'] : 'master';
+        $branch = isset($project['branch_default']) ? $project['branch_default'] : 'develop';
     }
 
     $public_dir = isset($project['public_dir']) ? $project['public_dir'] : 'public';
@@ -61,6 +62,7 @@
     permissions
     {{ $project['deploy_tactic'] }}
     symlink
+    permalinks
     purge_old
 @endstory
 
@@ -102,7 +104,7 @@
 
 @task('permissions')
     echo 'Setting up permissions'
-    cd {{ $releases_dir }};
+    cd {{ $releases_dir}};
     chmod -R ug+rwx {{ $release }};
 @endtask
 
@@ -131,7 +133,7 @@
 @task('rollback', [ 'on' => 'web' ])
     echo 'Rolling back to previous release';
     cd {{ $releases_dir }}
-    ln -nfs $(find {{ $releases_dir }} -maxdepth 1 -name "20*" | sort  | tail -n 2 | head -n1) {{ $current_dir }}
+    ln -nfs $(find {{ $releases_dir }} -maxdepth 1 -name "20*" | sort  | tail -n 2 | head -n1)/{{ $public_dir }} {{ $current_dir }}
 	echo "Rolled back to $(find . -maxdepth 1 -name "20*" | sort  | tail -n 2 | head -n1)"
 @endtask
 
@@ -143,7 +145,12 @@
     ln -nfs {{ $shared_dir }}/.env .env;
 
     echo 'Linking upload directory';
-    rm -rf {{ $releases_dir }}/{{ $release }}/public_html/app/uploads;
+    rm -rf {{ $releases_dir }}/{{ $release }}/web/app/uploads;
     cd {{ $releases_dir }}/{{ $release }};
-    ln -nfs {{ $shared_dir }}/uploads uploads;
+    ln -nfs {{ $shared_dir }}/uploads web/app/uploads;
+@endtask
+
+@task('permalinks')
+    echo 'Update rewrite structure';
+    wp rewrite structure '/%year%/%monthnum%/%postname%' --hard;
 @endtask
