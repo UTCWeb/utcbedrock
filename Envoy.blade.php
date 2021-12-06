@@ -133,7 +133,7 @@
 @task('rollback', [ 'on' => 'web' ])
     echo 'Rolling back to previous release';
     cd {{ $releases_dir }}
-    ln -nfs $(find {{ $releases_dir }} -maxdepth 1 -name "20*" | sort  | tail -n 2 | head -n1) {{ $current_dir }}
+    ln -nfs $(find {{ $releases_dir }} -maxdepth 1 -name "20*" | sort  | tail -n 2 | head -n1)/{{ $public_dir }} {{ $current_dir }}
 	echo "Rolled back to $(find . -maxdepth 1 -name "20*" | sort  | tail -n 2 | head -n1)"
 @endtask
 
