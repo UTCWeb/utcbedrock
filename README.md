@@ -6,7 +6,7 @@ This is a base repo that contains:
 - [Lando](http://lando.dev) config to start a local development environment (`lando start`)
 - [Laravel Envoy](https://laravel.com/docs/8.x/envoy) deployment script, targeting the UTC Web App Server, test environment (twebvmin11.is.utc.edu)
 
-Make a new UTCWeb Github repo, and push this code to it, to begin a new WordPress development project intended for deployment to the UTC Web App Server.
+Make a new UTCWeb Github repo, clone and push this code to it, to begin a new WordPress development project intended for deployment to the UTC Web App Server.
 
 ## Features
 
