@@ -28,7 +28,7 @@ Fork this repo to a new UTCWeb Github repo to begin a new WordPress development 
 
 This project includes Laravel Envoy, for "Zero-downtime" deployments with symlinks and rollbacks. Supports various scenarios for deploying WordPress (Bedrock), Laravel and static html projects.
 
-See Envoy.blade.php and envoy.config.php for the configuration and script, adapted from koterle/envoy-oven.
+See Envoy.blade.php and envoy.config.php for the configuration and script, adapted from [koterle/envoy-oven](https://github.com/martink635/envoy-oven).
 
 The project is pre-configured with an example storybook of tasks to deploy via SSH to a WordPress host on the UTC Web App Server, Test environment (twebvmin). Only a user who has the SSH keys for that virtual host can run the deploy command:
 - `lando envoy run deploy`
