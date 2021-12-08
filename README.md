@@ -22,7 +22,7 @@ Fork this repo to a new UTCWeb Github repo to begin a new WordPress development 
 - PHP >= 7.4 (provided by Lando, so no need to update PHP on your development environment)
 - Composer (provided by Lando, so run Composer commands `lando composer require repo/package`)
 - Add WordPress themes and plugins as Composer requirements from [WPackagist](https://wpackagist.org)
-- For custom/private repos, Github repo release zip via composer/installers, similar to how JS libs and custom packages are required in the UTC Cloud Drupal project.
+- For [custom/private packages](https://getcomposer.org/doc/05-repositories.md#using-private-repositories), Github repo release zip via composer/installers, similar to how JS libs and custom packages are required in the UTC Cloud Drupal project.
 
 ## Deployment Overview
 
